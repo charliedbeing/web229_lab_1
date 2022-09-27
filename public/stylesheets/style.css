@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+#logo-image{
+  width: 45%;
+  margin-right: 15px;
+}
