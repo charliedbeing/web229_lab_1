@@ -1,0 +1,11 @@
+  <div class="container px-4 py-5" id="featured-3">
+    <img style="width: 280px; margin-left:20%;" src="images/charlie.jpg" alt="">
+
+    <br>
+    <h3 style="margin-top:30px;" class="pb-2 border-bottom"><%= title %><a style="margin-left:30px" href="images/Resume_Charlie.pdf">My Resume</a></h3>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <%  missions.forEach(function(mission){ %>
+          <%- include('present-part',{mission:mission}); %>
+       <% }); %>
+    </div>
+  </div>

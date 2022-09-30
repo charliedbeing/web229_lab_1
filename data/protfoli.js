@@ -44,6 +44,7 @@ var data={
     ],
     projects:[
       {
+        imgPath:`images/go_m.jpg`,
         title:`GoMaterials – Montreal, Canada`,
         content:
         `
@@ -58,8 +59,8 @@ var data={
         `   
       },
       {
-        title:`Autozi.com – Beijing, China`,
-       
+        imgPath:`images/autozi.jpg`,
+        title:`Autozi.com – Beijing, China`,    
         content:
         `
 •	Participated in the design and initial realization of the company's self-developed e-commerce cloud platform using Microkernel Architecture aim to achieve IaaS, PaaS, SaaS Cloud Service ability.
@@ -72,8 +73,8 @@ var data={
         `   
       },
       {
-        title:`YBD.com -Beijign, China`,
-       
+        imgPath:`images/bjybd.jpg`,
+        title:`YBD.com -Beijign, China`,      
         content:
         `
         •	Designed and developed rapid development tools  using  metadata-driven development model, so users with non-technical or non-programmer skills could work on creating functionality or applications using these tools.
@@ -85,45 +86,33 @@ var data={
     ],
     services:[
       {
+        imgPath:`images/mean.jpg`,
         title:`Web Application design and develope -Javascript `,
         content:`
          Vue,React, Angular,Nodejs, Express, Mongodb
         `
       },
       {
+        imgPath:`images/S_java.jpg`,
         title:`Web Application design and develope - Java `,
         content:`
         Vue,React, Angular,Java，Spring MVC, Spring Boot, Spring Cloud,.NET,C#, SQL_SERVER, Oracle,Mysql.
         `
       },
       {
+        imgPath:`images/data_a.jpg`,
         title:`All kinds of data analysis and presentation`,
         content:`
          SQL,PL/SQL,Python, D3.js, Tabeau
         `
       }
     ],
-    contacts:[
+    contact:
       {
-        title:`LinkedIn `,
-        content:`
-         https://www.linkedin.com/in/charliedding/
-        `
-      },
-      {
-        title:`Email me `,
-        content:`
-          charliedding@gmail.com
-        `
-      },
-      {
-        title:`Leave a message here`,
-        content:`
-         Please leave your meessage here.
-         
-        `
+        linkin:`https://www.linkedin.com/in/charliedding/ `,
+        email:`charliedding@gmail.com`     
       }
-    ]
+      
       
 
 }
