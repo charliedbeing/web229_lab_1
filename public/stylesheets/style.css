@@ -1,6 +1,13 @@
+/**
+File name:: style.css
+Student name: Charlie Ding
+Student ID:301159548
+Date: Sep 30 2022
+*/
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:  #F3F0D7;
 }
 
 a {

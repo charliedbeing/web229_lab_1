@@ -1,5 +1,14 @@
+/**
+File name:: index.js
+Student name: Charlie Ding
+Student ID:301159548
+Date: Sep 30 2022
+*/
+
 var express = require('express');
 var router = express.Router();
+
+// main page content coming from this json data
 var data = require('../data/protfoli')
 
 
@@ -22,6 +31,7 @@ router.get('/home', function(req, res, next) {
 
 });
 
+/* server for contact form post . */
 router.post('/home', function(req, res, next) {
   res.render('contact-me',{
     summary:'Welcome you to visit Charlie\'s Portolio',
