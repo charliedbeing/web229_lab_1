@@ -11,6 +11,8 @@ var router = express.Router();
 // main page content coming from this json data
 var data = require('../data/protfoli')
 
+let indexController = require("../controllers/index");
+
 
 
 /* GET home page. */
@@ -18,7 +20,8 @@ router.get('/', function(req, res, next) {
   res.render('contact-me',
   {
     summary:'Welcome you to visit Charlie\'s Portolio',
-    missions:data.missions
+    missions:data.missions,
+    displayName: req.user ? req.user.username : "",
   }
   );
 });
@@ -26,7 +29,8 @@ router.get('/', function(req, res, next) {
 router.get('/home', function(req, res, next) {
   res.render('contact-me',{
     summary:'Welcome you to visit Charlie\'s Portolio',
-    missions:data.missions
+    missions:data.missions,
+    displayName: req.user ? req.user.username : "",
   });
 
 });
@@ -35,7 +39,8 @@ router.get('/home', function(req, res, next) {
 router.post('/home', function(req, res, next) {
   res.render('contact-me',{
     summary:'Welcome you to visit Charlie\'s Portolio',
-    missions:data.missions
+    missions:data.missions,
+    displayName: req.user ? req.user.username : "",
   });
 
 });
@@ -43,7 +48,8 @@ router.post('/home', function(req, res, next) {
 router.get('/about', function(req, res, next) {
   res.render('about_me',{
     summary:`Zhigang Ding | Full Stack/Web/API Developer(Java, JavaScript)`,
-    missions:data.about
+    missions:data.about,
+    displayName: req.user ? req.user.username : "",
   });
 });
 
@@ -51,21 +57,37 @@ router.get('/about', function(req, res, next) {
 router.get('/projects', function(req, res, next) {
   res.render('about_projects',{
     summary:'Charlie has many projects experiencs.',
-    missions:data.projects
+    missions:data.projects,
+    displayName: req.user ? req.user.username : "",
   });
 });
 
 router.get('/services', function(req, res, next) {
   res.render('about_projects',{summary:'Charlie has many services technique statck.',
-   missions:data.services
+   missions:data.services,
+   displayName: req.user ? req.user.username : "",
 });
 });
 
 
 router.get('/contact', function(req, res, next) {
   res.render('about_contact',{summary:'Charlie is waiting to server you.',
-  contact:data.contact
+  contact:data.contact,
+  displayName: req.user ? req.user.username : "",
 });
 });
+
+// login
+
+router.get("/login", indexController.displayLoginPage);
+
+router.post("/login", indexController.processLoginPage);
+router.get("/logout", indexController.performLogout);
+
+
+router.get("/register", indexController.displayRegisterPage);
+
+router.post("/register", indexController.processRegisterPage);
+
 
 module.exports = router;

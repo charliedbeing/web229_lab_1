@@ -12,8 +12,31 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// authentication by session and passort lib begin
+// step1 : session and db prepare.
+let session = require("express-session");
+let passport = require("passport");
+let passportLocal = require("passport-local");
+let localStratergy = passportLocal.Strategy;
+let flash = require("connect-flash");
+
+//database_setup
+let mongoose = require("mongoose");
+let DB = require("./config/db.js");
+
+//point mongoose to the DB URI
+mongoose.connect(DB.URI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+let mongodb = mongoose.connection;
+mongodb.on("error", console.error.bind(console, "connection error:"));
+mongodb.once("open", () => {
+  console.log("Database Connected");
+});
+
+
 var indexRouter = require('./routes/index');
 
+var contactRouter = require('./routes/contact');
 
 var app = express();
 
@@ -27,13 +50,45 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//step2:  setup express session and password  middleware
+app.use(
+  session({
+    secret: "SomeSecret",
+    saveUninitialized: false,
+    resave: false,
+  })
+);
+
+//initialize flash
+app.use(flash());
+
+//step 3: intialize passport middleware
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+//create usermodel instance
+let userModel = require("./models/user");
+let User = userModel.User;
+
+//implement a user authenticaion Strategy
+passport.use(User.createStrategy());
+
+//serialize and deserialize user object info -encrypt and decrypt
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
 // five main pages router
 app.use('/', indexRouter);
-app.use('/home', indexRouter);
-app.use('/about', indexRouter);
-app.use('/projects', indexRouter);
-app.use('/services', indexRouter);
-app.use('/contact', indexRouter);
+app.use('/contact-list',contactRouter);
+
+// app.use('/home', indexRouter);
+// app.use('/about', indexRouter);
+// app.use('/projects', indexRouter);
+// app.use('/services', indexRouter);
+// app.use('/contact', indexRouter);
 
 
 
