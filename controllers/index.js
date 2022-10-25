@@ -1,3 +1,11 @@
+/** 
+ * FileName:index.js
+ * Student's Name:Charlie Ding
+ * StudentID:301159548
+ * Date: Oct 25 2022
+ */
+
+
 let express = require("express");
 let router = express.Router();
 let mongoose = require("mongoose");
@@ -119,7 +127,7 @@ module.exports.processRegisterPage = (req, res, next) => {
       // redirect the user and authenticate them
 
       return passport.authenticate("local")(req, res, () => {
-        res.redirect("/book-list");
+        res.redirect("/contact-list");
       });
     }
   });
